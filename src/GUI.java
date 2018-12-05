@@ -35,10 +35,15 @@ public class GUI extends JFrame {
 	public static JFrame newFrame = new JFrame();
 	/**
 	 * Launch the application.
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+		
+		//create and connect to the database
 		db.start();
 		db.connect(directory, databaseName);
+		
+		//Launch the window
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -49,7 +54,13 @@ public class GUI extends JFrame {
 				}
 			}
 		});
+		
+		//disconnects and stops the SQL server
+		db.disconnect();
+		db.stop();
 	}
+	
+	//Sets the database, just added in-case a class would need it
 	public void setDB(data db1) {
 		db = db1;
 	}
@@ -79,7 +90,7 @@ public class GUI extends JFrame {
 				System.out.println("INSERT");
 			}
 		});
-		
+		//Below does all the creation of the buttons
 		JButton create = new JButton("CREATE");
 		create.addMouseListener(new MouseAdapter() {
 			@Override
