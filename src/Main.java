@@ -12,9 +12,9 @@ public class Main{
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException{
 		
-		String directory = "C:\\Users\\James\\Documents\\FinalDB";
+		String directory = GUI.directory;
 		Scanner reader = new Scanner(System.in);
-		String databaseName = "Final";
+		String databaseName = GUI.databaseName;
 		Server hsqlServer = null;
 		Connection connection;
 		data db = new data(databaseName, directory);
